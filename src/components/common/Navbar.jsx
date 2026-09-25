@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-[120] transition-all duration-500 ease-in-out ${
         shouldHide ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
       }`}
     >
@@ -114,7 +114,7 @@ const Navbar = () => {
 
         {/* Mobile search dropdown */}
         {mobileSearchOpen && (
-          <div className="md:hidden border-t border-gray-100 bg-white px-3 py-3">
+          <div className="md:hidden border-t border-gray-100 bg-white px-3 py-3 relative z-[130]">
             <SearchBar variant="mobile" onClose={() => setMobileSearchOpen(false)} />
           </div>
         )}
@@ -122,19 +122,20 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 bg-white z-40 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? 'translate-x-0' : 'translate-x-full'
-        } md:hidden`}
-        style={{ top: '64px' }}
+        className={`fixed inset-x-0 top-[64px] bottom-0 bg-white/95 backdrop-blur-md z-[130] transform transition-transform duration-300 ease-in-out md:hidden ${
+          isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+        }`}
       >
-        <div className="flex flex-col p-5 space-y-3 h-full overflow-y-auto">
+        <div className="flex flex-col p-4 sm:p-5 space-y-2 h-full overflow-y-auto">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.path}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center justify-between p-4 rounded-xl text-base font-medium ${
-                isActive(link.path) ? 'bg-kcsBlue text-white' : 'bg-gray-50 text-gray-700 active:bg-gray-100'
+              className={`flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium border transition-all ${
+                isActive(link.path)
+                  ? 'bg-kcsBlue text-white border-kcsBlue shadow-sm'
+                  : 'bg-gray-50 text-gray-700 border-gray-100 active:bg-gray-100'
               }`}
             >
               {link.name}
@@ -146,12 +147,12 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-between p-4 rounded-xl text-base font-medium bg-gray-50 text-gray-700"
+            className="flex items-center justify-between px-4 py-3.5 rounded-xl text-base font-medium bg-gray-50 text-gray-700 border border-gray-100"
           >
             Kigali Campus <ExternalLink size={16} />
           </a>
-          <div className="pt-3 border-t border-gray-200">
-            <Link to="/dashboard" onClick={() => setIsOpen(false)} className="btn-primary w-full text-center block">
+          <div className="pt-3 mt-2 border-t border-gray-200">
+            <Link to="/dashboard" onClick={() => setIsOpen(false)} className="btn-primary w-full text-center block py-3">
               My Portal
             </Link>
           </div>
