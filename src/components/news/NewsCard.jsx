@@ -102,10 +102,9 @@ const NewsCard = ({ news, onClick }) => {
         </div>
       </div>
 
-      {/* Clickable area for "Read More" in the hover overlay — pointer-events fix */}
+      {/* Ensure hover overlay can receive clicks only when visible */}
       <div
         className={`absolute inset-0 z-20 ${hovered ? 'pointer-events-auto' : 'pointer-events-none'}`}
-        style={{ pointerEvents: 'none' }}
       />
     </motion.article>
   );
