@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply font-sans text-gray-800 bg-white antialiased overflow-x-hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold text-kcsBlue;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-kcsBlue text-white px-6 py-3 rounded-lg font-semibold hover:bg-kcsBlue-dark transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md;
+  }
+  .btn-outline {
+    @apply border-2 border-kcsBlue text-kcsBlue px-6 py-3 rounded-lg font-semibold hover:bg-kcsBlue hover:text-white transition-all duration-300;
+  }
+  .section-padding {
+    @apply py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #003366;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #002244;
+}
+
+/* Slick Carousel Customization */
+.slick-dots li button:before {
+  color: white !important;
+  font-size: 12px !important;
+}
+.slick-dots li.slick-active button:before {
+  color: #FFCC00 !important;
+}
