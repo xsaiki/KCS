@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Music, Trophy, Mic, Palette } from 'lucide-react';
 
 const Extracurricular = () => {
@@ -10,7 +11,13 @@ const Extracurricular = () => {
   ];
 
   return (
-    <section className="section-padding bg-gray-50">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6 }}
+      className="section-padding bg-gray-50"
+    >
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Developing God-Driven Potentials</h2>
         <div className="w-24 h-1 bg-kcsYellow mx-auto"></div>
@@ -21,14 +28,21 @@ const Extracurricular = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {activities.map((activity, index) => (
-          <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-kcsBlue">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            key={index}
+            className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-kcsBlue"
+          >
             <div className="text-kcsBlue mb-4">{activity.icon}</div>
             <h3 className="font-bold text-lg mb-2">{activity.title}</h3>
             <p className="text-gray-600 text-sm">{activity.desc}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

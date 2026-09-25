@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { BookOpen, Users, Heart, Award } from 'lucide-react';
 
 const AboutSection = () => {
@@ -26,7 +27,13 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-gray-50">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6 }}
+      className="section-padding bg-gray-50"
+    >
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose KCS Gicumbi?</h2>
         <div className="w-24 h-1 bg-kcsYellow mx-auto mb-6"></div>
@@ -37,16 +44,23 @@ const AboutSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {features.map((feature, index) => (
-          <div key={index} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            key={index}
+            className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group"
+          >
             <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-kcsBlue group-hover:text-white transition-colors duration-300">
               {React.cloneElement(feature.icon, { className: 'group-hover:text-white transition-colors' })}
             </div>
             <h3 className="text-xl font-bold mb-3 text-kcsBlue">{feature.title}</h3>
             <p className="text-gray-600 leading-relaxed text-sm">{feature.desc}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

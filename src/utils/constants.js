@@ -17,6 +17,8 @@ export const SCHOOL_INFO = {
     'Primary 1 (P1)',
     'Primary 2 (P2)',
     'Primary 3 (P3)',
+    'Primary 4 (P4)',
+    'Primary 5 (P5)',
   ],
   languages: ['English', 'French', 'Kinyarwanda'],
 };

@@ -1,16 +1,23 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { GraduationCap, Globe, Book } from 'lucide-react';
 
 const AcademicsSection = () => {
   return (
-    <section className="section-padding bg-white">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.6 }}
+      className="section-padding bg-white"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         {/* Text Content */}
         <div>
           <span className="text-kcsRed font-bold tracking-wider uppercase text-sm mb-2 block">Our Academics</span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Building a Strong Foundation for Life</h2>
           <p className="text-gray-600 leading-relaxed mb-6">
-            At KCS Gicumbi, we offer a comprehensive curriculum designed to challenge and inspire students from Nursery 1 (Baby Class) to Primary Three (P3). Our teachers are followers of Christ with a passion for academic excellence and leading students to the Lord.
+            At KCS Gicumbi, we offer a comprehensive curriculum designed to challenge and inspire students from Nursery 1 (Baby Class) to Primary Five (P5). Our teachers are followers of Christ with a passion for academic excellence and leading students to the Lord.
           </p>
           
           <div className="space-y-6 mb-8">
@@ -70,7 +77,7 @@ const AcademicsSection = () => {
           />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

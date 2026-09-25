@@ -16,14 +16,12 @@ import Dashboard from './pages/Dashboard';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
 
-// Protected Route Wrapper
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   if (loading) return <Loader fullScreen />;
   return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
 
-// Auth Route Wrapper (redirects if already logged in)
 const AuthRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   if (loading) return <Loader fullScreen />;
@@ -33,6 +31,7 @@ const AuthRoute = ({ children }) => {
 function AppRoutes() {
   return (
     <Routes>
+      {/* All main pages use MainLayout (Navbar + Footer) */}
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
@@ -40,17 +39,21 @@ function AppRoutes() {
         <Route path="news" element={<News />} />
         <Route path="contact" element={<Contact />} />
         <Route path="faq" element={<FAQ />} />
+        <Route path="verify" element={<Verify />} />
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </Route>
 
-      {/* Auth Routes (no main layout) */}
+      {/* Auth pages standalone (no navbar/footer) */}
       <Route path="/login" element={<AuthRoute><Login /></AuthRoute>} />
       <Route path="/register" element={<AuthRoute><Register /></AuthRoute>} />
-      <Route path="/verify" element={<Verify />} />
 
-      {/* Protected Dashboard */}
-      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-
-      {/* Catch-all */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import InquiryForm from '../components/forms/InquiryForm';
 import SectionTitle from '../components/common/SectionTitle';
@@ -14,19 +15,24 @@ const Contact = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[95vh] -mt-16 md:-mt-20 flex items-center justify-center overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
           alt="Contact"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-kcsBlue/80"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Contact Us</h1>
-          <p className="text-lg text-gray-200 max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="relative z-10 text-center text-white px-4 max-w-3xl"
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">Contact Us</h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-200">
             We'd love to hear from you. Reach out to us with any questions or inquiries.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Contact Cards */}

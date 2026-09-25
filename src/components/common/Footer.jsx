@@ -1,28 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUp, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowUp, Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setShowScrollTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <footer className="bg-kcsBlue-dark text-white pt-16 pb-8 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          
-          {/* About */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-kcsBlue font-bold">K</div>
@@ -31,15 +25,14 @@ const Footer = () => {
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
               To develop excellent institutions of education that provide students an excellent Christian learning environment.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Facebook size={20} /></a>
-              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Twitter size={20} /></a>
-              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Instagram size={20} /></a>
-              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Linkedin size={20} /></a>
+            <div className="flex space-x-3">
+              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Facebook size={18} /></a>
+              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Twitter size={18} /></a>
+              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Instagram size={18} /></a>
+              <a href="#" className="text-gray-300 hover:text-kcsYellow transition"><Linkedin size={18} /></a>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm text-gray-300">
@@ -48,10 +41,19 @@ const Footer = () => {
               <li><Link to="/news" className="hover:text-kcsYellow transition">News & Updates</Link></li>
               <li><Link to="/faq" className="hover:text-kcsYellow transition">FAQs</Link></li>
               <li><Link to="/contact" className="hover:text-kcsYellow transition">Contact Us</Link></li>
+              <li>
+                <a
+                  href="https://kigalichristianschool.rw/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-kcsYellow transition flex items-center gap-1"
+                >
+                  Kigali Main Campus <ExternalLink size={12} />
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Contact Us</h4>
             <ul className="space-y-3 text-sm text-gray-300">
@@ -70,34 +72,32 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter / Motto */}
           <div>
             <h4 className="text-lg font-semibold text-white mb-4">Our Motto</h4>
             <p className="text-kcsYellow font-bold text-xl mb-4">"Discipline and Excellence"</p>
             <p className="text-sm text-gray-300 mb-4">
               Join our community and stay updated with the latest news.
             </p>
-            <Link to="/register" className="inline-block bg-kcsYellow text-kcsBlue-dark font-bold px-6 py-2 rounded-lg hover:bg-yellow-400 transition">
+            <Link to="/admissions" className="inline-block bg-kcsYellow text-kcsBlue-dark font-bold px-5 py-2 rounded-lg hover:bg-yellow-400 transition text-sm">
               Request Admission
             </Link>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Kigali Christian School - Gicumbi Campus. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Part of YFC Rwanda</p>
+        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-2">
+          <p>© {new Date().getFullYear()} Kigali Christian School - Gicumbi Campus. All rights reserved.</p>
+          <p>Part of YFC Rwanda</p>
         </div>
       </div>
 
-      {/* Scroll To Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 bg-kcsYellow text-kcsBlue-dark p-3 rounded-full shadow-lg transition-all duration-300 z-50 hover:bg-yellow-400 hover:scale-110 ${
+        className={`fixed bottom-6 right-6 bg-kcsYellow text-kcsBlue-dark p-3 rounded-full shadow-lg transition-all duration-300 z-50 hover:bg-yellow-400 hover:scale-110 ${
           showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
         aria-label="Scroll to top"
       >
-        <ArrowUp size={24} />
+        <ArrowUp size={22} />
       </button>
     </footer>
   );

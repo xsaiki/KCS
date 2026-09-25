@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import SectionTitle from '../components/common/SectionTitle';
 
@@ -8,7 +9,7 @@ const FAQ = () => {
   const faqs = [
     {
       q: 'What grades does KCS Gicumbi Campus offer?',
-      a: 'We currently offer classes from Nursery 1 (Baby Class) through Primary Three (P3). Registration is actively ongoing for all these levels.',
+      a: 'We currently offer classes from Nursery 1 (Baby Class) through Primary Five (P5). Registration is actively ongoing for all these levels.',
     },
     {
       q: 'What is the school motto and what does it mean?',
@@ -50,19 +51,24 @@ const FAQ = () => {
 
   return (
     <div className="animate-fade-in">
-      <div className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[95vh] -mt-16 md:-mt-20 flex items-center justify-center overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
           alt="FAQ"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-kcsBlue/80"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">FAQ</h1>
-          <p className="text-lg text-gray-200 max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="relative z-10 text-center text-white px-4 max-w-3xl"
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">FAQ</h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-200">
             Find answers to the most common questions about KCS Gicumbi Campus.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       <section className="section-padding">

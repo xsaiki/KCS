@@ -13,7 +13,7 @@ const CallToAction = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Registration is Currently Ongoing!</h2>
             <p className="text-gray-300 text-lg mb-8">
-              We are accepting applications for students from Nursery 1 (Baby Class) to Primary Three (P3). Join the KCS family today.
+              We are accepting applications for students from Nursery 1 (Baby Class) to Primary Five (P5). Join the KCS family today.
             </p>
             
             <div className="space-y-4 mb-8 text-white">
@@ -67,6 +67,8 @@ const CallToAction = () => {
                   <option>Primary 1</option>
                   <option>Primary 2</option>
                   <option>Primary 3</option>
+                  <option>Primary 4</option>
+                  <option>Primary 5</option>
                 </select>
               </div>
               <button type="submit" className="w-full btn-primary mt-4">Submit Request</button>

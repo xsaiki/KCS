@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Target, Eye, Heart, Award, Users, BookOpen } from 'lucide-react';
 import SectionTitle from '../components/common/SectionTitle';
 import { SCHOOL_INFO } from '../utils/constants';
@@ -7,19 +8,24 @@ const About = () => {
   return (
     <div className="animate-fade-in">
       {/* Page Hero */}
-      <div className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[95vh] -mt-16 md:-mt-20 flex items-center justify-center overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
           alt="About KCS"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-kcsBlue/80"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">About Us</h1>
-          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="relative z-10 text-center text-white px-4 max-w-3xl"
+        >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">About Us</h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-200">
             Discover the heart and vision behind Kigali Christian School - Gicumbi Campus
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Vision & Mission */}
