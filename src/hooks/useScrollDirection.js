@@ -1,28 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const useScrollDirection = () => {
   const [scrollDirection, setScrollDirection] = useState('up');
-  const [prevOffset, setPrevOffset] = useState(0);
+  const prevOffsetRef = useRef(0);
 
   useEffect(() => {
     const toggleScrollDirection = () => {
       const scrollY = window.pageYOffset;
       if (scrollY === 0) {
         setScrollDirection('up');
-        setPrevOffset(0);
+        prevOffsetRef.current = 0;
         return;
       }
-      if (scrollY > prevOffset) {
+      if (scrollY > prevOffsetRef.current) {
         setScrollDirection('down');
-      } else if (scrollY < prevOffset) {
+      } else if (scrollY < prevOffsetRef.current) {
         setScrollDirection('up');
       }
-      setPrevOffset(scrollY);
+      prevOffsetRef.current = scrollY;
     };
 
     window.addEventListener('scroll', toggleScrollDirection);
     return () => window.removeEventListener('scroll', toggleScrollDirection);
-  }, [prevOffset]);
+  }, []);
 
   return scrollDirection;
 };
