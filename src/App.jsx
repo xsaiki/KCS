@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import MainLayout from './layouts/MainLayout';
 import ScrollToTop from './components/common/ScrollToTop';
 import Loader from './components/common/Loader';
@@ -66,6 +67,7 @@ function App() {
         <NotificationProvider>
           <ScrollToTop />
           <AppRoutes />
+          <Analytics />
         </NotificationProvider>
       </AuthProvider>
     </Router>
